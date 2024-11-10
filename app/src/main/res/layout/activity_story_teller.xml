@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#13294B"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Story Board"
+        android:textColor="@color/white"
+        android:textSize="12pt"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="2pt"
+            android:backgroundTint="#7BAFD4"
+            android:onClick="find"
+            android:text="Find"
+            android:textSize="12pt" />
+        <EditText
+            android:id="@+id/tagsearch"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="30dp"/>
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Include Sketches"
+        android:textColor="@color/white"
+        android:textSize="10pt"
+        android:layout_gravity="center"/>
+
+    <ListView
+        android:id="@+id/imagelist"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You selected: "
+            android:textColor="@color/white"
+            android:textSize="10pt"/>
+
+        <TextView
+            android:id="@+id/taglist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="10pt"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/story"
+        android:background="@color/cardview_dark_background"
+        android:layout_width="400dp"
+        android:layout_height="225dp"
+        android:textColor="@color/white"
+        android:textSize="10pt"
+        android:layout_gravity="center"
+        android:scrollbars="vertical"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center|bottom"
+        android:layout_marginTop="5pt">
+
+        <Button
+            android:id="@+id/storybtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7BAFD4"
+            android:text="Story"
+            android:textSize="12pt"
+            android:layout_gravity="center"
+            android:onClick="onSubmitStory"
+            android:layout_marginRight="10pt"/>
+
+        <Button
+            android:id="@+id/backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="12pt"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#13294B"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/phototagger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Photo Tagger"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#7BAFD4"
+        android:textSize="12pt"
+        android:layout_margin="10pt"/>
+
+    <Button
+        android:id="@+id/sketchtagger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sketch Tagger"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12pt"
+        android:layout_margin="10pt"/>
+
+    <Button
+        android:id="@+id/storyteller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Story Teller"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12pt"
+        android:backgroundTint="@color/material_dynamic_tertiary70"
+        android:layout_margin="10pt"/>
+
+</LinearLayout>
