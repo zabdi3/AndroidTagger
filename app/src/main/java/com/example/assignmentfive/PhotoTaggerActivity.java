@@ -56,7 +56,6 @@ public class PhotoTaggerActivity extends AppCompatActivity {
     ListView lv;
     ImageListAdapter adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,10 +87,6 @@ public class PhotoTaggerActivity extends AppCompatActivity {
 
         tagtext = findViewById(R.id.vision_tags);
         findtext = findViewById(R.id.tagsearch);
-
-        //showLatestImage(); if this is commented out...starting screen blank which we want
-        //Cursor c = mydb.rawQuery("SELECT * FROM IMAGES", null);
-        //showLatestImages(c);
 
         ArrayList<ImageItem> latestimgs = showLatestImages();
         adapter.updateData(latestimgs);
@@ -186,13 +181,11 @@ public class PhotoTaggerActivity extends AppCompatActivity {
         }
     }
 
-
     public void startCamera(View view) {
         Intent cam_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         startActivityForResult(cam_intent, 1);
     }
-
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -243,12 +236,6 @@ public class PhotoTaggerActivity extends AppCompatActivity {
         imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] ba = stream.toByteArray();
 
-        // We are not creating a database everytime "SAVE" is clicked so make below Global???
-        // SQLiteDatabase mydb = this.openOrCreateDatabase("photos", Context.MODE_PRIVATE, null);
-        // mydb.execSQL("CREATE TABLE IF NOT EXISTS IMAGES (IMAGE BLOB, DATE DATETIME, TAGS TEXT)");
-
-
-        //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String timeStamp = new SimpleDateFormat("MM/dd/yy hh:mm:ssa").format(new Date());
         String tagString = tagtext.getText().toString(); // getting value of tagtext box
 

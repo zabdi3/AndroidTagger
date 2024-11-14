@@ -184,10 +184,6 @@ public class SketchTaggerActivity extends AppCompatActivity {
         drawablebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] ba = stream.toByteArray();
 
-        // We are not creating a database everytime "SAVE" is clicked so make below Global???
-        // SQLiteDatabase mydb = this.openOrCreateDatabase("photos", Context.MODE_PRIVATE, null);
-        // mydb.execSQL("CREATE TABLE IF NOT EXISTS IMAGES (IMAGE BLOB, DATE DATETIME, TAGS TEXT)");
-
         String timeStamp = new SimpleDateFormat("MM/dd/yy hh:mm:ssa").format(new Date());
         String tagString = tagtext.getText().toString(); // getting value of tagtext box
 
@@ -212,7 +208,6 @@ public class SketchTaggerActivity extends AppCompatActivity {
         tagtext.setText("");
         closeKeyboard();
     }
-
 
     public void find(View view) { // searching with tags
         Cursor c;
@@ -258,8 +253,6 @@ public class SketchTaggerActivity extends AppCompatActivity {
                     searchresults.add(new ImageItem(BitmapFactory.decodeByteArray(ba, 0, ba.length), tagsInDatabase + "\n" + date));
                     position++;
                 }
-
-
             } catch (CursorIndexOutOfBoundsException e) {
             }
             adapter.updateData(searchresults);
@@ -322,4 +315,3 @@ public class SketchTaggerActivity extends AppCompatActivity {
         void onResult(String result);
     }
 }
-

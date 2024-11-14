@@ -69,9 +69,6 @@ public class StoryTellerActivity extends AppCompatActivity {
 
         bothdb.execSQL("CREATE TABLE IF NOT EXISTS IMAGES (IMAGE BLOB, DATETIME TEXT, TAGS TEXT, TYPE TEXT)");
 
-//        context = findViewById(R.id.context);
-//        keywords = findViewById(R.id.keywords);
-
         imagedata = new ArrayList<>();
         adapter = new ImageListAdapter(this, R.layout.list_item, imagedata);
         lv = findViewById(R.id.imagelist);
@@ -129,76 +126,12 @@ public class StoryTellerActivity extends AppCompatActivity {
         tagsyouselected.setText(tagsforstory);
         Log.i("Tags Selected END", tagsyouselected.getText().toString());
     }
-
-//    public void makeHttpRequest(View view) throws JSONException {
-////        String contextreal = context.getText().toString(); // change to always be "story"
-//        String contextreal = "story";
-//
-//        JSONObject data = new JSONObject();
-//        data.put("context", contextreal); //always be story...
-//        data.put("max_tokens", 100);
-//        data.put("mode", "twitter");
-//        data.put("model", "chat-sophos-1");
-//
-//        // Json Array
-//        // String[] keywords = {"mouse", "shoe"};
-//        String newkeywords = keywords.getText().toString();
-//        String[] keywordsarray = newkeywords.split(","); // split by commas
-//
-//        data.put("keywords", new JSONArray(keywordsarray));
-//        // JSON object is done now json obj request
-//
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, data, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                //textView.setText("Response: " + response.toString());
-//                Log.d("success", response.toString());
-//                //Log.i("Context and Keywords", context.getText().toString() + " ALSO " + keywords.getText().toString());
-//                // Try this
-//                try {
-//                    JSONObject data = response.getJSONObject("data");
-//                    JSONArray outputs = data.getJSONArray("outputs");
-//                    JSONObject resultobj = outputs.getJSONObject(0);
-//                    story.setText("Generated Response: " + resultobj.getString("text"));
-//                } catch (JSONException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                // TODO: Handle error
-//                Log.e("error", new String(error.networkResponse.data));
-//
-//            }
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                //return super.getHeaders();
-//                HashMap<String, String> headers = new HashMap<>();
-//                headers.put("Content-Type", "application/json");
-//                headers.put("Authorization", "Bearer " + API_KEY);
-//                return headers;
-//            }
-//        };
-//// Post Request
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.add(request);
-//    }
-
     public void makeHttpRequest(String c, String[] k) throws JSONException { // context = c, keywords = k
         JSONObject data = new JSONObject();
         data.put("context", c); //always be story...
         data.put("max_tokens", 280);
         data.put("mode", "twitter");
         data.put("model", "claude-3-haiku");
-
-        // Json Array
-        // String[] keywords = {"mouse", "shoe"};
-        //String newkeywords = keywords.getText().toString();
-        //String[] keywordsarray = newkeywords.split(","); // split by commas
-        //data.put("keywords", new JSONArray(keywordsarray));
 
         String[] keywords = k;
         data.put("keywords", new JSONArray(keywords));
@@ -219,36 +152,28 @@ public class StoryTellerActivity extends AppCompatActivity {
                     //story.setText("Generated Response: " + resultobj.getString("text"));
                     story.setText(resultobj.getString("text"));
 
-
                     // to perform the movement action
                     // Moves the cursor or scrolls to the
                     // top or bottom of the document
                     story.setMovementMethod(new ScrollingMovementMethod());
 
-                    // WHERE TO PUT ASSIGNMENT 6 REQUIREMENTS?
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put(TextToSpeech.Engine.KEY_PARAM_VOLUME, "1");
-
+                    // Speaking text prompt
                     tts.speak(story.getText().toString(),TextToSpeech.QUEUE_FLUSH,params);
-
-
-                    // END OF ASSIGNMENT 6
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
             }
         }, new Response.ErrorListener() {
-
             @Override
             public void onErrorResponse(VolleyError error) {
                 // TODO: Handle error
                 Log.e("error", new String(error.networkResponse.data));
-
             }
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                //return super.getHeaders();
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 headers.put("Authorization", "Bearer " + API_KEY);
